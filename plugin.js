@@ -1,4 +1,5 @@
 var Promise = require('bluebird');
+var title = require('./title');
 
 var TennuTell = {
     requiresRoles: ['dbcore'],
@@ -19,22 +20,22 @@ var TennuTell = {
             }
         }
 
-        const dbASeenPromise = imports.dbcore.then(function(knex) {
-            return require('./title')(knex);
+        const dbATitlePromise = imports.dbcore.then(function(knex) {
+            return title(knex);
         });
 
         return {
             handlers: {
                 "privmsg": function(message) {
                     if (liveTitle) {
-                        return dbASeenPromise.then(function(title) {
+                        return dbATitlePromise.then(function(title) {
                             return title.handleLiveTitle(message.message);
                         });
                     }
                 },
                 "!title": function(command) {
                     // The call could take a second... or 5
-                    return dbASeenPromise.then(function(title) {
+                    return dbATitlePromise.then(function(title) {
                         return title.searchTitle(command.channel, client.nickname());
                     })
                 }

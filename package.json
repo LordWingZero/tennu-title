@@ -1,7 +1,7 @@
 {
-  "name": "tennu-aseen",
-  "version": "1.0.0",
-  "description": "A plugin for the tennu IRC framework, uses logging db to find last seen users.",
+  "name": "tennu-title",
+  "version": "1.0.2",
+  "description": "A plugin for the tennu IRC framework, uses logging db to find last sent URL and retirves the title for it.",
   "main": "plugin.js",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Victorio Berra",
-  "license": "WTFPL",
+  "license": "ISC",
   "dependencies": {
     "moment": "^2.10.6",
     "request-promise": "^1.0.2"
