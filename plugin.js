@@ -1,6 +1,6 @@
 var title = require('./title');
 
-var TennuTell = {
+var TennuTitle = {
     requiresRoles: ['dbcore'],
     init: function(client, imports) {
 
@@ -49,4 +49,4 @@ var TennuTell = {
     }
 };
 
-module.exports = TennuTell;
+module.exports = TennuTitle;
