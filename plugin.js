@@ -1,4 +1,3 @@
-var Promise = require('bluebird');
 var title = require('./title');
 
 var TennuTell = {

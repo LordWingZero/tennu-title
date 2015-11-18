@@ -1,5 +1,5 @@
 var moment = require('moment');
-var rp = require('request-promise');
+var fetch = require('node-fetch');
 var format = require('util').format;
 
 
@@ -56,18 +56,21 @@ function GetURI(rawText) {
     }
 };
 
-function handleWebCall(URL) {
+function handleWebCall(URI) {
 
-    if (URL.substring(0, 3) === 'www') {
-        URL = 'http://' + URL;
+    if (URI.substring(0, 3) === 'www') {
+        URI = 'http://' + URI;
     }
 
-    return rp(URL).then(function(htmlString) {
-        var titleMatch = htmlString.match(/<title.*>(.*?)<\/title>/i);
-        if (titleMatch) {
-            return titleMatch[1].replace(/^[\r\n]+|[\r\n]+$/g, "").trim();
-        }
-    });
+    return fetch(URI)
+        .then(function(res) {
+            return res.text();
+        }).then(function(body) {
+            var titleMatch = body.match(/<title.*>(.*?)<\/title>/i);
+            if (titleMatch) {
+                return titleMatch[1].replace(/^[\r\n]+|[\r\n]+$/g, "").trim();
+            }
+        });
 }
 
 function dbTitleSearch(to, ignoreNick, knex) {
