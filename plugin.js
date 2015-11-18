@@ -58,7 +58,7 @@ var TennuTitle = {
 
                         // isAdmin will be "undefined" if cooldown system is enabled
                         // isAdmin will be true/false if cooldown system is disabled
-                        if (typeof(isAdmin) !== "undefined" && isAdmin === false) {
+                        if (typeof(isadmin) !== "undefined" && isadmin === false) {
                             throw new Error(requiresAdminHelp);
                         }
 
