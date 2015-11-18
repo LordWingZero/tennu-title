@@ -4,6 +4,8 @@ A plugin for the [tennu](https://github.com/Tennu/tennu) irc framework.
 
 Hooks into the dbcore and uses the data from dblogger to check when someone last sent a link to the channel.
 
+Optionally uses - [tennu-cooldown](https://github.com/Tennu/tennu-cooldown)
+
 ### Configuration
 
 **liveTitle**: (default: false) Send title when link is sent to the channel. 
@@ -15,6 +17,7 @@ Hooks into the dbcore and uses the data from dblogger to check when someone last
 ```
 
 ### Requires
+- [tennu-admin](https://github.com/Tennu/tennu-admin)
 - [tennu-dblogger](https://github.com/LordWingZero/tennu-dblogger)
   - [tennu-dbcore](https://github.com/LordWingZero/tennu-dbcore)
 
