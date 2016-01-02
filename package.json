@@ -1,6 +1,6 @@
 {
   "name": "tennu-title",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "A plugin for the tennu IRC framework, uses logging db to find last sent URL and retirves the title for it.",
   "main": "plugin.js",
   "repository": {
