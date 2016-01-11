@@ -1,6 +1,11 @@
 var title = require('./title');
 
 var TennuTitle = {
+    configDefaults: {
+        "title": {
+            "liveTitle": false
+        }
+    },
     requiresRoles: ['dbcore'],
     init: function(client, imports) {
 
@@ -12,10 +17,6 @@ var TennuTitle = {
         };
 
         var titleConfig = client.config("title");
-
-        if (!titleConfig || !titleConfig.hasOwnProperty("liveTitle")) {
-            throw Error("asay is missing some or all of its configuration.");
-        }
 
         const dbATitlePromise = imports.dbcore.then(function(knex) {
             return title(knex);
