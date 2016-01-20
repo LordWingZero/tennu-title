@@ -66,7 +66,7 @@ function handleWebCall(URI) {
         .then(function(res) {
             return res.text();
         }).then(function(body) {
-            var titleMatch = body.match(/<title.*>(.*?)<\/title>/i);
+            var titleMatch = body.match(/<title.*>([\S\s]*?)<\/title>/i);
             if (titleMatch) {
                 return titleMatch[1].replace(/^[\r\n]+|[\r\n]+$/g, "").trim();
             }
