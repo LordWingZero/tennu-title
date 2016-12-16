@@ -18,7 +18,7 @@
     "node-fetch": "^1.3.3"
   },
   "peerDependencies": {
-    "tennu-dbcore": "^2",
-    "tennu-dblogger": "^2"
+    "tennu-dbcore": "^3",
+    "tennu-dblogger": "^3"
   }
 }
