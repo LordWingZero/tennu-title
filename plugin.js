@@ -1,4 +1,4 @@
-var title = require('./title');
+var title = require('./lib/title');
 
 var TennuTitle = {
     configDefaults: {
@@ -6,7 +6,7 @@ var TennuTitle = {
             "liveTitle": false
         }
     },
-    requiresRoles: ['dbcore'],
+    requiresRoles: ['dblogger', 'dbcore'],
     init: function(client, imports) {
 
         const helps = {
@@ -18,23 +18,17 @@ var TennuTitle = {
 
         var titleConfig = client.config("title");
 
-        const dbATitlePromise = imports.dbcore.then(function(knex) {
-            return title(knex);
-        });
+        title = title(imports.dbcore.knex);
 
         return {
             handlers: {
                 "privmsg": function(message) {
                     if (titleConfig.liveTitle) {
-                        return dbATitlePromise.then(function(title) {
-                            return title.handleLiveTitle(message.message);
-                        });
+                        return title.handleLiveTitle(message.message);
                     }
                 },
                 "!title": function(command) {
-                    return dbATitlePromise.then(function(title) {
-                        return title.searchTitle(command.channel, client.nickname());
-                    })
+                    return title.searchTitle(command.channel, client.nickname());
                 }
             },
 
